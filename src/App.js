@@ -1,24 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Btns from "./components/Btns";
+import Inputs from "./components/Inputs";
+import Modal from "./components/Modal";
+import Select from "./components/Select";
+import styled from "styled-components";
+
+// styled components
+const StBox = styled.div`
+  text-align: left;
+  padding: 20px 30px;
+`;
 
 function App() {
+  // button list
+  const greenBtnList = [
+    { width: "200px", height: "50px", backgroundColor: "rgb(85, 239, 196)", color: "rgb(0, 0, 0)", id: 1 },
+    { width: "130px", height: "45px", backgroundColor: "rgb(85, 239, 196)", color: "rgb(0, 0, 0)", id: 2 },
+    { width: "100px", height: "40px", backgroundColor: "rgb(85, 239, 196)", color: "rgb(0, 0, 0)", id: 3 },
+  ];
+  const PinkBtnList = [
+    { width: "200px", height: "50px", backgroundColor: "rgb(250, 177, 160)", color: "rgb(214, 48, 49)", id: 4 },
+    { width: "130px", height: "45px", backgroundColor: "rgb(250, 177, 160)", color: "rgb(214, 48, 49)", id: 5 },
+    { width: "100px", height: "40px", backgroundColor: "rgb(250, 177, 160)", color: "rgb(214, 48, 49)", id: 6 },
+  ];
+
+  const smallBtnList = [{ width: "100px", height: "40px", backgroundColor: "rgb(85, 239, 196)", color: "rgb(0, 0, 0)", name: "BtnForInp", id: 7 }];
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <StBox className="App">
+      <h1>assignment</h1>
+      <p>Button</p>
+      <Btns btnList={greenBtnList} />
+      <Btns btnList={PinkBtnList} />
+      <Inputs smallBtnList={smallBtnList} />
+      <Modal modalType={"modal_1"} />
+      <Modal modalType={"modal_2"} />
+      <Select />
+    </StBox>
   );
 }
 
