@@ -15,7 +15,7 @@ function Modal({ modalType }) {
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (isOpen && !modalRef.current.contains(event.target)) {
+      if (isOpen && !!modalRef.current && !modalRef.current.contains(event.target)) {
         setIsOpen(false);
       }
     };
