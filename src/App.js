@@ -8,7 +8,7 @@ import styled from "styled-components";
 // styled components
 const StBox = styled.div`
   text-align: left;
-  padding: 20px 30px;
+  margin: 10px;
 `;
 
 function App() {
@@ -28,11 +28,11 @@ function App() {
 
   return (
     <StBox className="App">
-      <h1>assignment</h1>
       <p>Button</p>
       <Btns btnList={greenBtnList} />
       <Btns btnList={PinkBtnList} />
       <Inputs smallBtnList={smallBtnList} />
+      <p>Modal</p>
       <Modal modalType={"modal_1"} />
       <Modal modalType={"modal_2"} />
       <Select />
