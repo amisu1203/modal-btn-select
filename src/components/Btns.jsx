@@ -10,8 +10,9 @@ const StContainer = styled.div`
 const StBtn = styled.div`
   width: ${(props) => props.width};
   height: ${(props) => props.height};
+  line-height: ${(props) => props.height};
   background-color: ${(props) => props.backgroundColor};
-  margin: 20px;
+  margin: 3px 5px;
   border: none;
   cursor: pointer;
   border-radius: 8px;
