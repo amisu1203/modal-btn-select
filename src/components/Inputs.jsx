@@ -25,8 +25,10 @@ function Inputs({ smallBtnList }) {
     const { id, value } = e.target;
     let price = value;
     if (id === "price") {
-      price = id === "price" ? parseFloat(value.replace(/,/g, "")) : value;
-      price = price.toLocaleString();
+      if (!!price) {
+        price = id === "price" ? parseFloat(value.replace(/,/g, "")) : value;
+        price = price.toLocaleString();
+      }
     }
     setData({ ...data, [id]: price });
   };
