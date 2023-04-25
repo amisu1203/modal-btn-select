@@ -24,11 +24,9 @@ function Inputs({ smallBtnList }) {
   const handleChange = (e) => {
     const { id, value } = e.target;
     let price = value;
-    if (id === "price") {
-      if (!!price) {
-        price = id === "price" ? parseFloat(value.replace(/,/g, "")) : value;
-        price = price.toLocaleString();
-      }
+    if (id === "price" && !!price) {
+      price = parseFloat(value.replace(/,/g, ""));
+      price = price.toLocaleString();
     }
     setData({ ...data, [id]: price });
   };
@@ -38,16 +36,13 @@ function Inputs({ smallBtnList }) {
   };
 
   return (
-    <div>
-      <p>input</p>
-      <StForm>
-        <label htmlFor="name">이름</label>
-        <StInp value={data.name} id="name" type="text" placeholder="이름을 입력하세요." onChange={handleChange} />
-        <label htmlFor="price">가격</label>
-        <StInp pattern="\d{1,3}(,\d{3})*" value={data.price} id="price" type="text" placeholder="가격을 입력하세요." onChange={handleChange} />
-        <Btns btnList={smallBtnList} handleClickSave={handleClickSave} />
-      </StForm>
-    </div>
+    <StForm>
+      <label htmlFor="name">이름</label>
+      <StInp value={data.name} id="name" type="text" placeholder="이름을 입력하세요." onChange={handleChange} />
+      <label htmlFor="price">가격</label>
+      <StInp pattern="\d{1,3}(,\d{3})*" value={data.price} id="price" type="text" placeholder="가격을 입력하세요." onChange={handleChange} />
+      <Btns btnList={smallBtnList} handleClickSave={handleClickSave} />
+    </StForm>
   );
 }
 
