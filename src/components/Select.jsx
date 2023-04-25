@@ -6,9 +6,14 @@ const StBox = styled.div`
   border: 3px solid rgb(221, 221, 221);
   height: 200px;
   overflow: hidden;
-  margin-top: 50px;
+  margin-top: 30px;
 `;
 
+const StTxt = styled.p`
+  font-size: 32px;
+  font-weight: 700;
+  margin: 20px 0;
+`;
 const StListBtn = styled.button`
   border: 1px solid rgb(221, 221, 221);
   height: 40px;
@@ -29,7 +34,7 @@ const StBoxList = styled.ul`
   background-color: rgb(255, 255, 255);
   line-height: 40px;
   position: absolute;
-  bottom: 0px;
+  bottom: -20px;
 `;
 
 const StList = styled.li`
@@ -57,7 +62,7 @@ const Select = () => {
 
   return (
     <StBox>
-      <p>Select</p>
+      <StTxt>Select</StTxt>
       <StListBtn onClick={handleBtnToggle}>
         <div>{text}</div>
         <div>▼</div>
