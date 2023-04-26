@@ -32,6 +32,9 @@ function Inputs({ smallBtnList }) {
   };
 
   const handleClickSave = (e) => {
+    if (data.name.length < 1 || data.price.length < 1) {
+      return alert("이름과 가격 모두 입력해주세요!");
+    }
     alert(`name : ${data.name} price : ${data.price}`);
   };
 
