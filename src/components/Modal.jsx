@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
-import Btns from "./Btns";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 // styled components
