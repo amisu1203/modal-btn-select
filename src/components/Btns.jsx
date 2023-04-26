@@ -1,13 +1,80 @@
+// import React from "react";
+// import styled from "styled-components";
+
+// const StContainer = styled.div`
+//   display: flex;
+//   flex-direction: row;
+//   text-align: center;
+// `;
+
+// const StBtn = styled.button`
+//   width: ${(props) => props.width};
+//   height: ${(props) => props.height};
+//   line-height: calc(${(props) => props.height} - 5px);
+//   background-color: ${(props) => props.backgroundColor};
+//   margin: 3px 5px;
+//   border: ${(props) => props.border};
+//   cursor: pointer;
+//   border-radius: 8px;
+//   box-sizing: border-box;
+//   color: ${(props) => props.color};
+//   font-weight: 600;
+//   font-size: 13.3px;
+// `;
+
+// // 색을 넣으면, 이름을 반환해주는 함수를 만듭니다.
+// const getBoxName = (box) => {
+//   if (box.name === "BtnForInp") return "저장";
+//   if (box.name === "BtnForModal") return "open modal";
+//   switch (box.width) {
+//     case "200px":
+//       return box.border === "3px solid rgb(85, 239, 196)" ? "Large Primary Button" : "Large Negative Button";
+//     case "130px":
+//       return "mideum";
+//     case "100px":
+//       return "small";
+//     default:
+//       return "검정 박스";
+//   }
+// };
+// const Btns = ({ btnList, handleClickSave }) => {
+//   return (
+//     <StContainer>
+//       {btnList.map((box) =>
+//         box.backgroundColor === "rgb(85, 239, 196)" || box.border === "3px solid rgb(85, 239, 196)" ? (
+//           <StBtn
+//             onClick={handleClickSave}
+//             height={box.height}
+//             width={box.width}
+//             backgroundColor={box.backgroundColor}
+//             color={box.color}
+//             border={box.border}
+//             key={box.id}
+//           >
+//             {getBoxName(box)}
+//           </StBtn>
+//         ) : (
+//           <StBtn height={box.height} width={box.width} backgroundColor={box.backgroundColor} border={box.border} color={box.color} key={box.id}>
+//             {getBoxName(box)}
+//           </StBtn>
+//         )
+//       )}
+//     </StContainer>
+//   );
+// };
+
+// export default Btns;
+
 import React from "react";
 import styled from "styled-components";
 
-const StContainer = styled.div`
+const Container = styled.div`
   display: flex;
   flex-direction: row;
   text-align: center;
 `;
 
-const StBtn = styled.button`
+const Btn = styled.button`
   width: ${(props) => props.width};
   height: ${(props) => props.height};
   line-height: calc(${(props) => props.height} - 5px);
@@ -22,44 +89,39 @@ const StBtn = styled.button`
   font-size: 13.3px;
 `;
 
-// 색을 넣으면, 이름을 반환해주는 함수를 만듭니다.
-const getBoxName = (box) => {
-  if (box.name === "BtnForInp") return "저장";
-  if (box.name === "BtnForModal") return "open modal";
-  switch (box.width) {
+const getButtonName = (button) => {
+  if (button.name === "BtnForInp") return "저장";
+  if (button.name === "BtnForModal") return "open modal";
+  switch (button.width) {
     case "200px":
-      return box.border === "3px solid rgb(85, 239, 196)" ? "Large Primary Button" : "Large Negative Button";
+      return button.border === "3px solid rgb(85, 239, 196)" ? "Large Primary Button" : "Large Negative Button";
     case "130px":
-      return "mideum";
+      return "medium";
     case "100px":
       return "small";
     default:
       return "검정 박스";
   }
 };
+
+const Button = ({ button, handleClickSave }) => {
+  const { height, width, backgroundColor, border, color } = button;
+  const buttonName = getButtonName(button);
+
+  return (
+    <Btn onClick={handleClickSave} height={height} width={width} backgroundColor={backgroundColor} color={color} border={border}>
+      {buttonName}
+    </Btn>
+  );
+};
+
 const Btns = ({ btnList, handleClickSave }) => {
   return (
-    <StContainer>
-      {btnList.map((box) =>
-        box.backgroundColor === "rgb(85, 239, 196)" || box.border === "3px solid rgb(85, 239, 196)" ? (
-          <StBtn
-            onClick={handleClickSave}
-            height={box.height}
-            width={box.width}
-            backgroundColor={box.backgroundColor}
-            color={box.color}
-            border={box.border}
-            key={box.id}
-          >
-            {getBoxName(box)}
-          </StBtn>
-        ) : (
-          <StBtn height={box.height} width={box.width} backgroundColor={box.backgroundColor} border={box.border} color={box.color} key={box.id}>
-            {getBoxName(box)}
-          </StBtn>
-        )
-      )}
-    </StContainer>
+    <Container>
+      {btnList.map((button) => (
+        <Button button={button} handleClickSave={handleClickSave} key={button.id} />
+      ))}
+    </Container>
   );
 };
 
