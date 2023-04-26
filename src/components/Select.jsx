@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 import styled from "styled-components";
 
 // styled components
@@ -34,7 +34,7 @@ const StBoxList = styled.ul`
   background-color: rgb(255, 255, 255);
   line-height: 40px;
   position: absolute;
-  bottom: -20px;
+  bottom: -25px;
 `;
 
 const StList = styled.li`
@@ -58,7 +58,7 @@ const Select = () => {
     setIsToggled((text) => !text);
   }, []);
 
-  //
+  const langList = ["리액트", "자바", "스프링", "리액트네이티브"];
 
   return (
     <StBox>
@@ -69,10 +69,11 @@ const Select = () => {
       </StListBtn>
       {isToggled ? (
         <StBoxList className="ul">
-          <StList onClick={handleClickLi}>리액트</StList>
-          <StList onClick={handleClickLi}>자바</StList>
-          <StList onClick={handleClickLi}>스프링</StList>
-          <StList onClick={handleClickLi}>리액트네이티브</StList>
+          {langList.map((item) => (
+            <StList onClick={handleClickLi} key={item}>
+              {item}
+            </StList>
+          ))}
         </StBoxList>
       ) : (
         <></>
